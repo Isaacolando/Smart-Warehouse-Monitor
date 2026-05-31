@@ -1,9 +1,8 @@
 # Smart Room / Warehouse Monitoring System
 ### ESP32-Based Multi-Zone Environmental Monitor
 
-**Authors:** Isaac Mburu (SPH32/2910/2023) · Garrison Kirimi (SPH32/2725/2023) · Fredrick Ngumo (SPH32/2722/2023)
+Members: Isaac Mburu (SPH32/2910/2023) · Garrison Kirimi (SPH32/2725/2023)
 
----
 
 ## Project Overview
 
@@ -239,19 +238,15 @@ Change these defines at the top of the `.ino` to match your environment:
 #define LIGHT_LOW_LUX 300
 ```
 
----
+Applying Common shared bus:
 
-## Notes on the Bus Concept
-
-You asked about a common shared bus (like I2C/RS485 on a single wire):
-
-- **I2C** works for sensors within ~1 m (same PCB / enclosure). All OLED, temp
+- I2C works for sensors within ~1 m (same PCB / enclosure). All OLED, temp
   sensors etc. can share SDA/SCL with different addresses.
-- **RS-485** is the industrial standard for multi-room long-distance buses (up to
+- RS-485 for the industrial standard for multi-room long-distance buses (up to
   1200 m). Requires a MAX485 transceiver chip per node. Each node gets a unique
   address. Good for permanent installations.
-- **ESP-NOW** (used in this project) is wireless and simpler for room-scale
+- ESP-NOW (for our case) is wireless and simpler for room-scale
   deployments. No extra hardware needed.
 
-For a future upgrade to RS-485 bus, use the `ModbusMaster` library with
+Future upgrades to `ModbusMaster` library with
 `HardwareSerial` on ESP32 pins TX2/RX2 (GPIO 17/16).
