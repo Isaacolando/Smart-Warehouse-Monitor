@@ -1,68 +1,9 @@
-# Wokwi Library Manager
-# Paste this content into your wokwi.toml OR use Wokwi's library manager.
-# In Wokwi online editor: click the Library icon (books) → search each name below.
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
 
-# ── Required Libraries ──────────────────────────────────────
-
-# 1. DHT sensor library
-#    Author : Adafruit
-#    Install: Library Manager → search "DHT sensor library"
+# Automatically added based on includes:
 DHT sensor library
-
-# 2. Adafruit Unified Sensor
-#    Author : Adafruit
-#    Install: Library Manager → search "Adafruit Unified Sensor"
-Adafruit Unified Sensor
-
-# 3. Adafruit SSD1306
-#    Author : Adafruit
-#    Install: Library Manager → search "Adafruit SSD1306"
-Adafruit SSD1306
-
-# 4. Adafruit GFX Library
-#    Author : Adafruit
-#    Install: Library Manager → search "Adafruit GFX Library"
 Adafruit GFX Library
 
-# 5. MQ135
-#    Author : GeorgK
-#    Install: Library Manager → search "MQ135"
-MQ135
-
-# 6. ThingSpeak
-#    Author : MathWorks
-#    Install: Library Manager → search "ThingSpeak"
-ThingSpeak
-
-# 7. ESPAsyncWebServer
-#    Author : ESP Async WebServer
-#    Install: Library Manager → search "ESPAsyncWebServer"
-#    NOTE: In Wokwi, add in wokwi.toml:
-#      [libraries]
-#      ESPAsyncWebServer-esphome = "*"
-ESPAsyncWebServer-esphome
-
-# 8. AsyncTCP
-#    Author : dvarrel
-AsyncTCP
-
-# 9. ArduinoJson
-#    Author : Benoit Blanchon
 ArduinoJson
-
-# ── wokwi.toml (create this file in same folder as diagram.json) ────────────
-# [wokwi]
-# version = 1
-# firmware = "SmartWarehouse.ino.bin"   # compiled binary
-# elf = "SmartWarehouse.ino.elf"
-#
-# [libraries]
-# "DHT sensor library" = "1.4.6"
-# "Adafruit Unified Sensor" = "1.1.14"
-# "Adafruit SSD1306" = "2.5.10"
-# "Adafruit GFX Library" = "1.11.9"
-# "MQ135" = "1.2.0"
-# "ThingSpeak" = "2.0.0"
-# "ESPAsyncWebServer-esphome" = "3.1.0"
-# "AsyncTCP" = "1.1.4"
-# "ArduinoJson" = "7.0.4"
+Adafruit SSD1306
