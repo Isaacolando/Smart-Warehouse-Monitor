@@ -1,53 +1,199 @@
 {
   "version": 1,
-  "author": "Smart Warehouse Monitor – Single Board v3",
+  "author": "Smart Warehouse Monitor – Wokwi Simulation",
   "editor": "wokwi",
   "parts": [
-    { "id": "master",       "type": "board-esp32-devkit-v1", "top": 200, "left": 320, "attrs": {} },
-    { "id": "oled1",        "type": "wokwi-ssd1306",         "top": 20,  "left": 600, "attrs": { "i2cAddress": "0x3c" } },
-    { "id": "relay_fan",    "type": "wokwi-relay-module",    "top": 480, "left": 80,  "attrs": { "label": "Z1-Fan"    } },
-    { "id": "relay_heater", "type": "wokwi-relay-module",    "top": 540, "left": 80,  "attrs": { "label": "Z1-Heater" } },
-    { "id": "relay_lights", "type": "wokwi-relay-module",    "top": 600, "left": 80,  "attrs": { "label": "Z1-Lights" } },
-    { "id": "relay_buzzer", "type": "wokwi-relay-module",    "top": 660, "left": 80,  "attrs": { "label": "Z1-Buzzer" } },
-    { "id": "led_r",        "type": "wokwi-led",             "top": 480, "left": 600, "attrs": { "color": "red",   "label": "RED" } },
-    { "id": "led_g",        "type": "wokwi-led",             "top": 530, "left": 600, "attrs": { "color": "green", "label": "GRN" } },
-    { "id": "r1",           "type": "wokwi-resistor",        "top": 480, "left": 660, "attrs": { "value": "220" } },
-    { "id": "r2",           "type": "wokwi-resistor",        "top": 530, "left": 660, "attrs": { "value": "220" } },
-    { "id": "vcc1",         "type": "wokwi-vcc",             "top": 340, "left": 80,  "attrs": {} },
-    { "id": "gnd1",         "type": "wokwi-gnd",             "top": 400, "left": 80,  "attrs": {} }
+    {
+      "id": "esp",
+      "type": "board-esp32-devkit-v1",
+      "top": 200,
+      "left": 320,
+      "attrs": {}
+    },
+    {
+      "id": "dht1",
+      "type": "wokwi-dht22",
+      "top": 20,
+      "left": 80,
+      "attrs": {}
+    },
+    {
+      "id": "pot_mq135",
+      "type": "wokwi-potentiometer",
+      "top": 100,
+      "left": 80,
+      "attrs": { "label": "MQ-135 (CO2)" }
+    },
+    {
+      "id": "pot_sound",
+      "type": "wokwi-potentiometer",
+      "top": 180,
+      "left": 80,
+      "attrs": { "label": "Sound Sensor" }
+    },
+    {
+      "id": "ldr1",
+      "type": "wokwi-photoresistor-sensor",
+      "top": 260,
+      "left": 80,
+      "attrs": {}
+    },
+    {
+      "id": "oled1",
+      "type": "wokwi-ssd1306",
+      "top": 20,
+      "left": 600,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "id": "relay_fan",
+      "type": "wokwi-relay-module",
+      "top": 480,
+      "left": 80,
+      "attrs": { "label": "Relay Fan" }
+    },
+    {
+      "id": "relay_heater",
+      "type": "wokwi-relay-module",
+      "top": 540,
+      "left": 80,
+      "attrs": { "label": "Relay Heater" }
+    },
+    {
+      "id": "relay_lights",
+      "type": "wokwi-relay-module",
+      "top": 600,
+      "left": 80,
+      "attrs": { "label": "Relay Lights" }
+    },
+    {
+      "id": "relay_buzzer",
+      "type": "wokwi-relay-module",
+      "top": 660,
+      "left": 80,
+      "attrs": { "label": "Relay Buzzer" }
+    },
+    {
+      "id": "led_r",
+      "type": "wokwi-led",
+      "top": 480,
+      "left": 640,
+      "attrs": { "color": "red", "label": "RGB-Red" }
+    },
+    {
+      "id": "led_g",
+      "type": "wokwi-led",
+      "top": 530,
+      "left": 640,
+      "attrs": { "color": "green", "label": "RGB-Green" }
+    },
+    {
+      "id": "led_b",
+      "type": "wokwi-led",
+      "top": 580,
+      "left": 640,
+      "attrs": { "color": "blue", "label": "RGB-Blue" }
+    },
+    {
+      "id": "r1",
+      "type": "wokwi-resistor",
+      "top": 480,
+      "left": 700,
+      "attrs": { "value": "220" }
+    },
+    {
+      "id": "r2",
+      "type": "wokwi-resistor",
+      "top": 530,
+      "left": 700,
+      "attrs": { "value": "220" }
+    },
+    {
+      "id": "r3",
+      "type": "wokwi-resistor",
+      "top": 580,
+      "left": 700,
+      "attrs": { "value": "220" }
+    },
+    {
+      "id": "buzzer1",
+      "type": "wokwi-buzzer",
+      "top": 420,
+      "left": 600,
+      "attrs": {}
+    },
+    {
+      "id": "vcc1",
+      "type": "wokwi-vcc",
+      "top": 340,
+      "left": 80,
+      "attrs": {}
+    },
+    {
+      "id": "gnd1",
+      "type": "wokwi-gnd",
+      "top": 380,
+      "left": 80,
+      "attrs": {}
+    }
   ],
   "connections": [
-    ["master:GND.1",     "gnd1:GND",   "black", []],
-    ["master:3V3",       "vcc1:VCC",   "red",   []],
+    ["esp:GND.1",        "gnd1:GND",       "black",  []],
+    ["esp:3V3",          "vcc1:VCC",       "red",    []],
 
-    ["oled1:VCC",        "vcc1:VCC",   "red",   []],
-    ["oled1:GND",        "gnd1:GND",   "black", []],
-    ["oled1:SDA",        "master:D21", "blue",  []],
-    ["oled1:SCL",        "master:D22", "cyan",  []],
+    ["dht1:VCC",         "vcc1:VCC",       "red",    []],
+    ["dht1:GND",         "gnd1:GND",       "black",  []],
+    ["dht1:SDA",         "esp:D4",         "green",  []],
 
-    ["relay_fan:VCC",    "vcc1:VCC",   "red",   []],
-    ["relay_fan:GND",    "gnd1:GND",   "black", []],
-    ["relay_fan:IN",     "master:D26", "white", []],
+    ["pot_mq135:VCC",    "vcc1:VCC",       "red",    []],
+    ["pot_mq135:GND",    "gnd1:GND",       "black",  []],
+    ["pot_mq135:SIG",    "esp:D34",        "yellow", []],
 
-    ["relay_heater:VCC", "vcc1:VCC",   "red",   []],
-    ["relay_heater:GND", "gnd1:GND",   "black", []],
-    ["relay_heater:IN",  "master:D27", "white", []],
+    ["pot_sound:VCC",    "vcc1:VCC",       "red",    []],
+    ["pot_sound:GND",    "gnd1:GND",       "black",  []],
+    ["pot_sound:SIG",    "esp:D35",        "orange", []],
 
-    ["relay_lights:VCC", "vcc1:VCC",   "red",   []],
-    ["relay_lights:GND", "gnd1:GND",   "black", []],
-    ["relay_lights:IN",  "master:D14", "white", []],
+    ["ldr1:VCC",         "vcc1:VCC",       "red",    []],
+    ["ldr1:GND",         "gnd1:GND",       "black",  []],
+    ["ldr1:AO",          "esp:D32",        "purple", []],
 
-    ["relay_buzzer:VCC", "vcc1:VCC",   "red",   []],
-    ["relay_buzzer:GND", "gnd1:GND",   "black", []],
-    ["relay_buzzer:IN",  "master:D12", "white", []],
+    ["oled1:VCC",        "vcc1:VCC",       "red",    []],
+    ["oled1:GND",        "gnd1:GND",       "black",  []],
+    ["oled1:SDA",        "esp:D21",        "blue",   []],
+    ["oled1:SCL",        "esp:D22",        "cyan",   []],
 
-    ["master:D23",       "r1:1",       "red",   []],
-    ["r1:2",             "led_r:A",    "red",   []],
-    ["led_r:C",          "gnd1:GND",   "black", []],
+    ["relay_fan:VCC",    "vcc1:VCC",       "red",    []],
+    ["relay_fan:GND",    "gnd1:GND",       "black",  []],
+    ["relay_fan:IN",     "esp:D26",        "white",  []],
 
-    ["master:D18",       "r2:1",       "green", []],
-    ["r2:2",             "led_g:A",    "green", []],
-    ["led_g:C",          "gnd1:GND",   "black", []]
+    ["relay_heater:VCC", "vcc1:VCC",       "red",    []],
+    ["relay_heater:GND", "gnd1:GND",       "black",  []],
+    ["relay_heater:IN",  "esp:D27",        "white",  []],
+
+    ["relay_lights:VCC", "vcc1:VCC",       "red",    []],
+    ["relay_lights:GND", "gnd1:GND",       "black",  []],
+    ["relay_lights:IN",  "esp:D14",        "white",  []],
+
+    ["relay_buzzer:VCC", "vcc1:VCC",       "red",    []],
+    ["relay_buzzer:GND", "gnd1:GND",       "black",  []],
+    ["relay_buzzer:IN",  "esp:D12",        "white",  []],
+
+    ["esp:D23",          "r1:1",           "red",    []],
+    ["r1:2",             "led_r:A",        "red",    []],
+    ["led_r:C",          "gnd1:GND",       "black",  []],
+
+    ["esp:D18",          "r2:1",           "green",  []],
+    ["r2:2",             "led_g:A",        "green",  []],
+    ["led_g:C",          "gnd1:GND",       "black",  []],
+
+    ["esp:D19",          "r3:1",           "blue",   []],
+    ["r3:2",             "led_b:A",        "blue",   []],
+    ["led_b:C",          "gnd1:GND",       "black",  []],
+
+    ["buzzer1:1",        "esp:D12",        "brown",  []],
+    ["buzzer1:2",        "gnd1:GND",       "black",  []]
   ],
-  "serialMonitor": { "display": "terminal" }
+  "serialMonitor": {
+    "display": "terminal"
+  }
 }

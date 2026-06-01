@@ -1,9 +1,38 @@
-# Wokwi Library List
-# See https://docs.wokwi.com/guides/libraries
+# ============================================================
+#  WOKWI SIMULATION – Required Libraries
+#  (only these 4 are needed for the Wokwi .ino)
+# ============================================================
+#
+#  In Wokwi online editor:
+#    Click the Library icon (book stack, left sidebar)
+#    Search and add each library below ONE BY ONE.
+#
+#  These are the ONLY libraries the simulation needs:
 
-# Automatically added based on includes:
-DHT sensor library
-Adafruit GFX Library
+DHT sensor library        
+Adafruit Unified Sensor     
+Adafruit SSD1306           
+Adafruit GFX Library       
 
-ArduinoJson
-Adafruit SSD1306
+# ============================================================
+#  DO NOT add ESPAsyncWebServer or ThingSpeak in Wokwi.
+#  Those are only for the REAL hardware version (SmartWarehouse.ino).
+#  The Wokwi simulation does not use Wi-Fi or web server at all.
+# ============================================================
+
+# ── For REAL hardware (Arduino IDE, not Wokwi): ─────────────
+#  Install these ADDITIONALLY in Arduino IDE Library Manager:
+#    - MQ135                  by GeorgK
+#    - ThingSpeak             by MathWorks
+#    - ArduinoJson            by Benoit Blanchon
+#    - AsyncTCP               by dvarrel  (manual ZIP install)
+#    - ESPAsyncWebServer      by lacamera (manual ZIP install)
+#
+#  Manual install URL for ESPAsyncWebServer (correct working fork):
+#    https://github.com/lacamera/ESPAsyncWebServer/archive/refs/heads/master.zip
+#
+#  Manual install URL for AsyncTCP:
+#    https://github.com/dvarrel/AsyncTCP/archive/refs/heads/master.zip
+#
+#  Arduino IDE → Sketch → Include Library → Add .ZIP Library
+MQ135
