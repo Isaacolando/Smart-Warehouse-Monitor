@@ -226,17 +226,7 @@ Features:
 
 ---
 
-## Thresholds Customisation
 
-Change these defines at the top of the `.ino` to match your environment:
-
-```cpp
-#define TEMP_HIGH_C   28.0   // warehouses may need 35.0
-#define TEMP_LOW_C    18.0   // poultry may need 32.0
-#define CO2_HIGH_PPM  1000   // livestock rooms may need 800
-#define NOISE_HIGH_DB 70
-#define LIGHT_LOW_LUX 300
-```
 
 Applying Common shared bus:
 
